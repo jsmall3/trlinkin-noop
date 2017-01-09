@@ -10,7 +10,7 @@ Puppet::Parser::Functions::newfunction(:noop, :doc => "Set noop default for all 
       raise(Puppet::ParseError, "noop(): Requires either "+
         "no arguments or a Boolean as first argument")
     end
-    @noop_value = args[0]
+    @noop_value = args[0] && lookupvar('clientnoop')
   else
     @noop_value = true
   end
